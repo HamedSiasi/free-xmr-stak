@@ -240,7 +240,7 @@ void minethd::work_main()
 
 				*(uint32_t*)(bWorkBlob + 39) = results[i];
 
-				if((results[i] | 0xEB000000u) != 0xEB000000u)
+				if((results[i] & 0xEB000000u) != 0xEB000000u)
 				{
 					printf("Invalid NH nonce on AMD - 0x%.8x\n", results[i]);
 					exit(0);

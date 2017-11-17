@@ -407,7 +407,7 @@ void minethd::work_main()
 
 			if (*piHashVal < oWork.iTarget)
 			{
-				if((result.iNonce | 0xEB000000u) != 0xEB000000u)
+				if((result.iNonce & 0xEB000000u) != 0xEB000000u)
 				{
 					printf("Invalid NH nonce on CPU SINGLE - 0x%.8x\n", result.iNonce);
 					exit(0);
@@ -563,7 +563,7 @@ void minethd::double_work_main()
 			{
 				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce-1, bDoubleHashOut, iThreadNo), oWork.iPoolId));
 
-				if((iNonce-1 | 0xEB000000u) != 0xEB000000u)
+				if((iNonce-1 & 0xEB000000u) != 0xEB000000u)
 				{
 					printf("Invalid NH nonce on CPU DOUBLE - 0x%.8x\n", iNonce-1);
 					exit(0);
@@ -574,7 +574,7 @@ void minethd::double_work_main()
 			{
 				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce, bDoubleHashOut + 32, iThreadNo), oWork.iPoolId));
 
-				if((iNonce | 0xEB000000u) != 0xEB000000u)
+				if((iNonce & 0xEB000000u) != 0xEB000000u)
 				{
 					printf("Invalid NH nonce on CPU DOUBLE - 0x%.8x\n", iNonce);
 					exit(0);

@@ -282,7 +282,7 @@ void minethd::work_main()
 
 				*(uint32_t*)(bWorkBlob + 39) = foundNonce[i];
 
-				if((foundNonce[i] | 0xEB000000u) != 0xEB000000u)
+				if((foundNonce[i] & 0xEB000000u) != 0xEB000000u)
 				{
 					printf("Invalid NH nonce on NVIDIA - 0x%.8x\n", foundNonce[i]);
 					exit(0);

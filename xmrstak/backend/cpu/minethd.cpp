@@ -414,6 +414,7 @@ void minethd::work_main()
 				}
 
 				executor::inst()->push_event(ex_event(result, oWork.iPoolId));
+			}
 
 			std::this_thread::yield();
 		}

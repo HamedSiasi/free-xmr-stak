@@ -409,7 +409,7 @@ void minethd::work_main()
 			{
 				if((result.iNonce | 0xEB000000u) != 0xEB000000u)
 				{
-					printf("Invalid NH nonce on CPU SINGLE - 0x%x\n", result.iNonce);
+					printf("Invalid NH nonce on CPU SINGLE - 0x%.8x\n", result.iNonce);
 					exit(0);
 				}
 
@@ -565,7 +565,7 @@ void minethd::double_work_main()
 
 				if((iNonce-1 | 0xEB000000u) != 0xEB000000u)
 				{
-					printf("Invalid NH nonce on CPU DOUBLE - 0x%x\n", iNonce-1);
+					printf("Invalid NH nonce on CPU DOUBLE - 0x%.8x\n", iNonce-1);
 					exit(0);
 				}
 			}
@@ -576,7 +576,7 @@ void minethd::double_work_main()
 
 				if((iNonce | 0xEB000000u) != 0xEB000000u)
 				{
-					printf("Invalid NH nonce on CPU DOUBLE - 0x%x\n", iNonce);
+					printf("Invalid NH nonce on CPU DOUBLE - 0x%.8x\n", iNonce);
 					exit(0);
 				}
 			}

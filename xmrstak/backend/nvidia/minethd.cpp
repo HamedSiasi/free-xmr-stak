@@ -284,7 +284,7 @@ void minethd::work_main()
 
 				if((foundNonce[i] | 0xEB000000u) != 0xEB000000u)
 				{
-					printf("Invalid NH nonce on NVIDIA - 0x%x\n", foundNonce[i];
+					printf("Invalid NH nonce on NVIDIA - 0x%.8x\n", foundNonce[i]);
 					exit(0);
 				}
 				

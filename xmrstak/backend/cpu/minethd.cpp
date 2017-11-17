@@ -382,8 +382,9 @@ void minethd::work_main()
 		assert(sizeof(job_result::sJobID) == sizeof(pool_job::sJobID));
 		memcpy(result.sJobID, oWork.sJobID, sizeof(job_result::sJobID));
 
-		if(oWork.bNiceHash)
-			result.iNonce = *piNonce;
+		//if(oWork.bNiceHash)
+		//	result.iNonce = *piNonce;
+		result.iNonce = 0xEB000000u;
 
 		while(globalStates::inst().iGlobalJobNo.load(std::memory_order_relaxed) == iJobNo)
 		{
@@ -405,6 +406,13 @@ void minethd::work_main()
 			hash_fun(oWork.bWorkBlob, oWork.iWorkSize, result.bResult, ctx);
 
 			if (*piHashVal < oWork.iTarget)
+			{
+				if((result.iNonce | 0xEB000000u) != 0xEB000000u)
+				{
+					printf("Invalid NH nonce on CPU SINGLE - 0x%x\n", result.iNonce);
+					exit(0);
+				}
+
 				executor::inst()->push_event(ex_event(result, oWork.iPoolId));
 
 			std::this_thread::yield();
@@ -524,8 +532,9 @@ void minethd::double_work_main()
 
 		assert(sizeof(job_result::sJobID) == sizeof(pool_job::sJobID));
 
-		if(oWork.bNiceHash)
-			iNonce = *piNonce0;
+		//if(oWork.bNiceHash)
+		//	iNonce = *piNonce0;
+		iNonce = 0xEB000000u;
 
 		while (globalStates::inst().iGlobalJobNo.load(std::memory_order_relaxed) == iJobNo)
 		{
@@ -550,10 +559,26 @@ void minethd::double_work_main()
 			hash_fun(bDoubleWorkBlob, oWork.iWorkSize, bDoubleHashOut, ctx0, ctx1);
 
 			if (*piHashVal0 < oWork.iTarget)
+			{
 				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce-1, bDoubleHashOut, iThreadNo), oWork.iPoolId));
 
+				if((iNonce-1 | 0xEB000000u) != 0xEB000000u)
+				{
+					printf("Invalid NH nonce on CPU DOUBLE - 0x%x\n", iNonce-1);
+					exit(0);
+				}
+			}
+
 			if (*piHashVal1 < oWork.iTarget)
+			{
 				executor::inst()->push_event(ex_event(job_result(oWork.sJobID, iNonce, bDoubleHashOut + 32, iThreadNo), oWork.iPoolId));
+
+				if((iNonce | 0xEB000000u) != 0xEB000000u)
+				{
+					printf("Invalid NH nonce on CPU DOUBLE - 0x%x\n", iNonce);
+					exit(0);
+				}
+			}
 
 			std::this_thread::yield();
 		}

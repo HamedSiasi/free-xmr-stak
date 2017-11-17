@@ -214,8 +214,8 @@ void minethd::work_main()
 		uint64_t target = oWork.iTarget;
 		XMRSetJob(pGpuCtx, oWork.bWorkBlob, oWork.iWorkSize, target);
 
-		if(oWork.bNiceHash)
-			pGpuCtx->Nonce = *(uint32_t*)(oWork.bWorkBlob + 39);
+		//if(oWork.bNiceHash)
+			pGpuCtx->Nonce = 0xEB000000;//*(uint32_t*)(oWork.bWorkBlob + 39);
 
 		while(globalStates::inst().iGlobalJobNo.load(std::memory_order_relaxed) == iJobNo)
 		{
@@ -239,6 +239,12 @@ void minethd::work_main()
 				memset(bResult, 0, sizeof(job_result::bResult));
 
 				*(uint32_t*)(bWorkBlob + 39) = results[i];
+
+				if((results[i] | 0xEB000000u) != 0xEB000000u)
+				{
+					printf("Invalid NH nonce on AMD - 0x%x\n", results[i]);
+					exit(0);
+				}
 
 				hash_fun(bWorkBlob, oWork.iWorkSize, bResult, cpu_ctx);
 				if ( (*((uint64_t*)(bResult + 24))) < oWork.iTarget)

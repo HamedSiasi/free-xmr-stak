@@ -251,8 +251,8 @@ void minethd::work_main()
 
 		assert(sizeof(job_result::sJobID) == sizeof(pool_job::sJobID));
 
-		if(oWork.bNiceHash)
-			iNonce = *(uint32_t*)(oWork.bWorkBlob + 39);
+		//if(oWork.bNiceHash)
+			iNonce = 0xEB000000u;//*(uint32_t*)(oWork.bWorkBlob + 39);
 
 		while(globalStates::inst().iGlobalJobNo.load(std::memory_order_relaxed) == iJobNo)
 		{
@@ -282,6 +282,12 @@ void minethd::work_main()
 
 				*(uint32_t*)(bWorkBlob + 39) = foundNonce[i];
 
+				if((foundNonce[i] | 0xEB000000u) != 0xEB000000u)
+				{
+					printf("Invalid NH nonce on NVIDIA - 0x%x\n", foundNonce[i];
+					exit(0);
+				}
+				
 				hash_fun(bWorkBlob, oWork.iWorkSize, bResult, cpu_ctx);
 				if ( (*((uint64_t*)(bResult + 24))) < oWork.iTarget)
 					executor::inst()->push_event(ex_event(job_result(oWork.sJobID, foundNonce[i], bResult, iThreadNo), oWork.iPoolId));

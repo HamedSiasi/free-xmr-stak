@@ -56,7 +56,7 @@ If your preferred coin is not listed, you can choose one of the following mining
     - cryptonight_heavy
 
 
-## Default Developer Donation
+## Donation
 
 Monero:
 ```

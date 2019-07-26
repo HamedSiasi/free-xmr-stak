@@ -52,14 +52,12 @@ Following coins can be mined using this miner:
 - [Monero](https://getmonero.org)
 - [Plenteum](https://www.plenteum.com/)
 - [QRL](https://theqrl.org)
-- **[Ryo](https://ryo-currency.com) - Upcoming xmr-stak-gui is sponsored by Ryo Currency**
 - [Torque](https://torque.cash/)
 - [TurtleCoin](https://turtlecoin.lol)
 - [Zelerius](https://zelerius.org/)
 - [X-CASH](https://x-network.io/)
 
-**[Ryo Currency](https://ryo-currency.com)** - is a way for us to implement the ideas that we were unable to in
-Monero. See [here](https://github.com/fireice-uk/cryptonote-speedup-demo/) for details.
+
 
 If your preferred coin is not listed, you can choose one of the following mining algorithms:
 - 256Kib scratchpad memory
@@ -91,11 +89,6 @@ If your preferred coin is not listed, you can choose one of the following mining
     - cryptonight_haven
     - cryptonight_heavy
 
-Please note, this list is not complete and is not an endorsement.
-
-## Download
-
-You can find the latest releases and precompiled binaries on GitHub under [Releases](https://github.com/fireice-uk/xmr-stak/releases).
 
 ## Default Developer Donation
 

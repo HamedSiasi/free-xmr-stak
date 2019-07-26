@@ -4,11 +4,6 @@
 XMR-Stak is a universal open source stratum pool miner. This miner supports CPUs, AMD and NVIDIA GPUs and can be used various crypto currencies: Ryo, Monero, Turtlecoin, Graft, Bittube, Loki, Aeon and many more Cryptonight coins.
 
 
-
-## Video guides
-[<img src="doc/_img/stak-yt-cover.jpg">](https://www.youtube.com/playlist?list=PLAhUkom29iGMFoN8pk91JA-oqvxlmJ5H8)
-###### Video by Crypto Sewer
-
 ## Overview
 * [Features](#features)
 * [Supported coins and algorithms](#supported-coins-and-algorithms)
@@ -104,16 +99,8 @@ You can find the latest releases and precompiled binaries on GitHub under [Relea
 
 ## Default Developer Donation
 
-By default, the miner will donate 2% of the hashpower (2 minutes in 100 minutes) to my pool. If you want to change that, edit [donate-level.hpp](xmrstak/donate-level.hpp) before you build the binaries.
-
-If you want to donate directly to support further development, here is my wallet
-
-fireice-uk:
+Monero:
 ```
-4581HhZkQHgZrZjKeCfCJxZff9E3xCgHGF25zABZz7oR71TnbbgiS7sK9jveE6Dx6uMs2LwszDuvQJgRZQotdpHt1fTdDhk
+44Ke2bFE3xMVyiX5HMYeqwfvVPGMZcr9cZzrmbvekaUUdM8URxsiFmKgQ6w85jtnJeeNKG3borLenPmNsYWgxwEf7aMzwCQ
 ```
 
-psychocrypt:
-```
-45tcqnJMgd3VqeTznNotiNj4G9PQoK67TGRiHyj6EYSZ31NUbAfs9XdiU5squmZb717iHJLxZv3KfEw8jCYGL5wa19yrVCn
-```
